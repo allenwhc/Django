@@ -1,0 +1,10 @@
+<h1 style="margin-top: 0; position: center; ">Welcome to Haochen's survey</h1>
+{% if item_list %}
+	<ul style="font-family: Arial; font-size: 22px">
+	{% for i in item_list %}
+		<li><a href="{% url 'polls:detail' i.id%}">{{i.item_text}}</a></li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>Item hasn't been created!</p>
+{% endif %}

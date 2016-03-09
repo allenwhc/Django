@@ -1,7 +1,14 @@
+
 {% if latest_question_list %}
-	<ul>
+	<style type="text/css">
+	body{
+		background-image: url('imgs/home_back.jpg');
+		background-color: #cccccc;
+	}
+	</style>
+	<ul style="font-size: 22px">
 		{% for q in latest_question_list %}
-			<li><a href="/home/{{q.id}}/">{{q.question_text}}</a></li>
+			<li><a href="{% url 'home:details' q.id %}">{{q.question_text}}</a></li>
 		{% endfor %}
 	</ul>
 {% else %}
