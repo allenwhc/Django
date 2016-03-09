@@ -1,10 +1,8 @@
 <html>
 <h1>{{item.item_text}}</h1>
-
 {% if error_message %}<p><strong>{{error_message}}</strong></p>
 {% endif %}
-<hr>
-<form action="{% url 'polls:vote' item.id %}" method="post" name="education">
+<form action="{% url 'polls:result' item.id %}" method="post" name="education">
 {% csrf_token %}
 <table>
 	{% for question in item.question_set.all %}
@@ -20,7 +18,7 @@
 			}
 		</script>
 		{% for choice in question.choice_set.all %}
-			<input type="radio" name="{{question.id}}" value="choice" id="{{forloop.counter}}" onclick="is_checked({{question.id}});">
+			<input type="radio" name="{{question.id}}" value="choice" id="choice{{forloop.counter}}" onclick="is_checked({{question.id}});">
 			<!-- <label for="choice:{{forloop.counter}}" style="font-family: Arial;">{{choice.choice_text}}</label> -->{{choice.choice_text}}<br/>
 		{% endfor %}
 		<hr>

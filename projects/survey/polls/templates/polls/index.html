@@ -1,10 +1,10 @@
 <h1 style="margin-top: 0; position: center; ">Welcome to Haochen's survey</h1>
-{% if item_list %}
+{% if question_list %}
 	<ul style="font-family: Arial; font-size: 22px">
-	{% for i in item_list %}
-		<li><a href="{% url 'polls:detail' i.id%}">{{i.item_text}}</a></li>
+	{% for question in question_list %}
+		<li><a href="{% url 'polls:detail' question.id%}">{{question.question_text}}</a></li>
 	{% endfor %}
 	</ul>
 {% else %}
-	<p>Item hasn't been created!</p>
+	<p>Question not found!</p>
 {% endif %}
