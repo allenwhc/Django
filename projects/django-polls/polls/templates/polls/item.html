@@ -1,0 +1,30 @@
+<html>
+<h1>{{item.item_text}}</h1>
+{% if error_message %}<p><strong>{{error_message}}</strong></p>
+{% endif %}
+<form action="{% url 'polls:result' item.id %}" method="post" name="education">
+{% csrf_token %}
+<table>
+	{% for question in item.question_set.all %}
+		<h2 style="font-weight: bolder;font-size: 22px">{{question.question_text}}</h2>
+		<script type="text/javascript">
+			function is_checked(idx){
+				var selectedChoice=document.getElementsByName(idx);
+				for(var i=0; i<selectedChoice.length; i++){
+					if(selectedChoice[i].checked) {
+						break;
+					}
+				}
+			}
+		</script>
+		{% for choice in question.choice_set.all %}
+			<input type="radio" name="{{question.id}}" value="choice" id="choice{{forloop.counter}}" onclick="is_checked({{question.id}});">
+			<!-- <label for="choice:{{forloop.counter}}" style="font-family: Arial;">{{choice.choice_text}}</label> -->{{choice.choice_text}}<br/>
+		{% endfor %}
+		<hr>
+	{% endfor %}
+	</table>
+</br>
+<input type="reset" value="Clear"/>
+<input type="submit" value="Submit"/></form>
+</html>

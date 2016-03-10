@@ -1,0 +1,10 @@
+
+<p style="font-size: 22px; font-weight: bolder;">Result: "{{question.question_text}}"</p>
+<ul>
+{% for choice in question.choice_set.all %}
+	<li>{{choice.choice_text}} -- {{choice.votes}} vote{{choice.votes | pluralize}} </li>
+{% endfor %}
+</ul>
+<!-- <p class="reusltview"><a href="{% url 'polls:detail' question.id%}">survey again</a></p> -->
+<form class="resultview" action="{% url 'polls:detail' question.id %}">{%csrf_token%}<input type="submit" value="Survey again"/></form>
+
