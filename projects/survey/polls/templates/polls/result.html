@@ -6,4 +6,5 @@
 {% endfor %}
 </ul>
 <!-- <p class="reusltview"><a href="{% url 'polls:detail' question.id%}">survey again</a></p> -->
-<form class="resultview" action="{% url 'polls:detail' question.id %}"><input type="submit" value="Survey again"/></form>
+<form class="resultview" action="{% url 'polls:detail' question.id %}">{%csrf_token%}<input type="submit" value="Survey again"/></form>
+
