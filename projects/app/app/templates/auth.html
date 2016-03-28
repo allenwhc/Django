@@ -1,0 +1,7 @@
+{% block content %}
+	{% if inactive_message %}
+		<p>{{inactive_message}}</p>
+	{% elif invalid_message %}
+		<p>{{invalid_message}}</p>
+	{% endif %}
+{% endblock %}

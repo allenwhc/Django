@@ -1,15 +1,8 @@
 <h1>Welcome to register!</h1>
 {% block content %}
-	{% if registered %}
-		<p><strong>Thank you for your registration!</strong></p>
-		<a href="/welcome/"></a>
-	{% else %}
-		<p><strong>Register here</strong></p>
-		<form action="/welcome/register/" method="post" enctype="multipart/form-data">
-			{% csrf_token %}
-			{{user_form.as_p}}
-			{{profile_form.as_p}}
-			<input type="submit" value="Submit"></input>
-		</form>
-	{% endif %}
+	<form action="/register_success/">
+		{% csrf_token %}
+		{{form}}
+		<input type="submit" value="Submit"></input>
+	</form>
 {% endblock %}

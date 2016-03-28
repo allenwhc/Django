@@ -1,9 +1,19 @@
 <h1>Welcome!</h1>
 {% block content %}
-	<label><strong>Username</strong></label>
-	<input type="text" id="username" name="usr"/></br></br>
-	<label><strong>Password</strong></label>
-	<input type="password" id="password" name="pwd"/></br>
-	<input type="reset" value="Clear"/>
-	<input type="submit" value="Login"/>
+	{% if form.error %}
+		<strong>Oops! Invalid username or password.</strong>
+	{% endif %}
+	<form action="/auth/" method="post">
+		{% csrf_token %}
+		<label for="username">Username</label>
+		<input type="text" name="username" id="username"></input>
+		<label for="password">Password</label>
+		<input type="password" name="password" id="password"></input>
+		<input type="reset" value="Clear"></input>
+		<input type="submit" value="Login"></input>
+	</form>
+	<form>
+		{% csrf_token %}
+		<a href="/register/">Create New User</a>
+	</form>
 {% endblock %}
